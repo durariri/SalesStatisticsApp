@@ -1,0 +1,7 @@
+{
+  "name": "SalesStatisticsApp",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
