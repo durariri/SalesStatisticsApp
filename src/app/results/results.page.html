@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Results</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="processedResults">
+    <table>
+      <tr>
+        <th></th>
+        <th *ngFor="let month of processedResults.months; let j = index">Month {{ j + 1 }}</th>
+        <th>Total</th>
+      </tr>
+      <tr *ngFor="let model of processedResults.models; let i = index">
+        <td>Model {{ i + 1 }}</td>
+        <td *ngFor="let month of processedResults.months; let j = index">
+          {{ getSalesData(i, j) }}
+        </td>
+        <td>{{ processedResults.rowSums[i] || 0 }}</td>
+      </tr>
+      <tr>
+        <td>Total</td>
+        <td *ngFor="let sum of processedResults.columnSums">{{ sum || 0 }}</td>
+        <td>{{ processedResults.totalSum }}</td>
+      </tr>
+    </table>
+  </div>
+</ion-content>

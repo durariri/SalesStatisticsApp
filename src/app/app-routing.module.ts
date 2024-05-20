@@ -2,15 +2,9 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 
 const routes: Routes = [
-  {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
-  },
-  {
-    path: '',
-    redirectTo: 'home',
-    pathMatch: 'full'
-  },
+  { path: '', redirectTo: 'app-input-form', pathMatch: 'full' },
+  { path: 'input-form', loadChildren: () => import('./input-form/input-form.module').then(m => m.InputFormPageModule) },
+  { path: 'results', loadChildren: () => import('./results/results.module').then(m => m.ResultsPageModule) },
 ];
 
 @NgModule({

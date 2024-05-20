@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Input Form</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <ion-item>
+      <ion-label position="floating">Number of Models</ion-label>
+      <ion-input formControlName="modelsCount" type="number"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label position="floating">Number of Months</ion-label>
+      <ion-input formControlName="monthsCount" type="number"></ion-input>
+    </ion-item>
+    <ion-button expand="full" type="submit">Generate Form</ion-button>
+  </form>
+
+  <div *ngIf="generatedForm">
+    <form [formGroup]="generatedForm" (ngSubmit)="onCalculate()">
+      <table>
+        <tr>
+          <th></th>
+          <th *ngFor="let month of months; let j = index">Month {{ j + 1 }}</th>
+          <th>Total</th>
+        </tr>
+        <tr *ngFor="let model of models; let i = index">
+          <td>Model {{ i + 1 }}</td>
+          <td *ngFor="let month of months; let j = index">
+            <ion-input [formControlName]="'model' + i + 'month' + j" type="number"></ion-input>
+          </td>
+          <td>{{ rowSums[i] }}</td>
+        </tr>
+        <tr>
+          <td>Total</td>
+          <td *ngFor="let sum of columnSums">{{ sum }}</td>
+          <td>{{ totalSum }}</td>
+        </tr>
+      </table>
+      <ion-button expand="full" type="submit">Calculate</ion-button>
+    </form>
+  </div>
+</ion-content>

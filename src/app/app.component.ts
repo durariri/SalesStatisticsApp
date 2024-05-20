@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor() {}
+  results: any = {};  
+
+  onSalesData(data: any) {
+    this.results = data;
+  }
 }

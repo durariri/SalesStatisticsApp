@@ -1,3 +1,2 @@
-<ion-app>
-  <ion-router-outlet></ion-router-outlet>
-</ion-app>
+<app-input-form (salesData)="onSalesData($event)"></app-input-form>
+<app-results [results]="results" *ngIf="results"></app-results>
